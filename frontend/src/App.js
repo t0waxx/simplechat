@@ -131,10 +131,11 @@ function ChatInterface({ signOut, user }) {
               <div key={index} className={`message ${msg.role}`}>
                 <div className="message-content">
                   <ReactMarkdown
-                    children={msg.content}
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeHighlight]}
-                  />
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
                 </div>
               </div>
             ))
