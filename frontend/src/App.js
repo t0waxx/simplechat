@@ -5,6 +5,8 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import axios from 'axios';
 import './App.css';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // 設定を読み込む関数
 const loadConfig = () => {
@@ -125,9 +127,9 @@ function ChatInterface({ signOut, user }) {
             messages.map((msg, index) => (
               <div key={index} className={`message ${msg.role}`}>
                 <div className="message-content">
-                  {msg.content.split('\n').map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))}
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {msg.content}
+                  </ReactMarkdown>
                 </div>
               </div>
             ))
