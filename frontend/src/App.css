@@ -353,3 +353,7 @@
       color: #d1d1d1;
     }
   }
+
+.hljs {
+  border-radius: 18px;
+}
