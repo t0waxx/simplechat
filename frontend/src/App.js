@@ -7,6 +7,8 @@ import axios from 'axios';
 import './App.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github.css';
 
 // 設定を読み込む関数
 const loadConfig = () => {
@@ -127,7 +129,10 @@ function ChatInterface({ signOut, user }) {
             messages.map((msg, index) => (
               <div key={index} className={`message ${msg.role}`}>
                 <div className="message-content">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight]}
+                  >
                     {msg.content}
                   </ReactMarkdown>
                 </div>
